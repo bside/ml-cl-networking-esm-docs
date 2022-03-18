@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "44c8d173-875a-4f1d-91dc-28ac859f3c12",
+		"name": "ML API Proxy (ESM) - alvaro@code.cl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ERROR - Bad route",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/invalid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invalid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR - Missing headers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/meli-api/prod",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meli-api",
+						"prod"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR - Invalid app or env",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Consumer-Key",
+						"value": "non-existent-consumer-key",
+						"type": "text"
+					},
+					{
+						"key": "Consumer-Id",
+						"value": "some-uuid-string",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/meli-api/prod",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meli-api",
+						"prod"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OK - Validated and proxied request (404)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Consumer-Key",
+						"value": "example-consumer",
+						"type": "text"
+					},
+					{
+						"key": "Consumer-Id",
+						"value": "some-uuid-string",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/meli-api/prod/categories/NOEXISTE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meli-api",
+						"prod",
+						"categories",
+						"NOEXISTE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OK - Validated and proxied request (200)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Consumer-Key",
+						"value": "example-consumer",
+						"type": "text"
+					},
+					{
+						"key": "Consumer-Id",
+						"value": "some-uuid-string",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/meli-api/prod/categories/MLA1743",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meli-api",
+						"prod",
+						"categories",
+						"MLA1743"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
